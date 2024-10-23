@@ -1,7 +1,9 @@
 const express = require('express')
 const cors = require('cors')
+
+const config = require('./utils/config')
 const app = express()
-const port = 3333
+const port = config.PORT
 
 app.use(cors())
 app.get('/api', (req, res) => {
