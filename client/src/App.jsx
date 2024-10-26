@@ -8,7 +8,7 @@ const App = () => {
   const connectToServer = () => {
     axios.get('/api')
       .then(res => res.data)
-      .then(data => setData(data.message))
+      .then(data => setData(data))
   }
 
   return (
