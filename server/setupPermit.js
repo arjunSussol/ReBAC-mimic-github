@@ -50,31 +50,48 @@ const cleanEnv = async () => {
     console.log(`Deleting role: ${role.key}`)
     await permit.api.roles.delete(role.key)
   }
+
+  const resourceInstances = await permit.api.resourceInstances.list()
+  console.log(`Found ${resourceInstances.length} resourceInstances`)
+  for(const instance of resourceInstances) {
+    console.log(`deleting resourceInstances: ${instance.key}`)
+    await permit.api.roleAssignments.delete(instance.key)
+  }
 }
 
 const createResources = async () => {
+  console.log('Creating resources, action, roles and permissions')
   await permit.api.createResource(
     {
       'key': 'account',
       'name': 'Account',
       'actions': {
-        'invite-member': {},
-        'list-members': {},
-        'remove-member': {}
+        'create': {},
+        'delete': {},
+        'edit': {},
+        'view': {}
       },
       'roles': {
+        'owner': {
+          'name': 'Owner',
+          'permissions': [
+            'create',
+            'delete',
+            'edit',
+            'view'
+          ]
+        },
         'admin': {
           'name': 'Admin',
           'permissions': [
-            'invite-member',
-            'list-members',
-            'remove-member'
+            'edit',
+            'view'
           ]
         },
         'member': {
           'name': 'Member',
           'permissions': [
-            'list-members'
+            'view'
           ]
         }
       }
@@ -83,32 +100,35 @@ const createResources = async () => {
 
   await permit.api.createResource(
     {
-      'key': 'folder',
-      'name': 'Folder',
+      'key': 'repository',
+      'name': 'Repository',
       'actions': {
-        'list-files': {},
-        'create-file': {},
-        'rename': {},
+        'create': {},
+        'delete': {},
+        'edit': {},
+        'view': {}
       },
       'roles': {
-        'editor': {
-          'name': 'Editor',
+        'owner': {
+          'name': 'Owner',
           'permissions': [
-            'list-files',
-            'create-file',
-            'rename',
+            'create',
+            'view',
+            'delete',
+            'edit'
           ],
         },
-        'commenter': {
-          'name': 'Commenter',
+        'admin': {
+          'name': 'Admin',
           'permissions': [
-            'list-files',
+            'view',
+            'edit'
           ],
         },
-        'viewer': {
-          'name': 'Viewer',
+        'member': {
+          'name': 'Member',
           'permissions': [
-            'list-files',
+            'view',
           ],
         },
       },
@@ -117,35 +137,26 @@ const createResources = async () => {
 
   await permit.api.createResource(
     {
-      'key': 'file',
-      'name': 'File',
+      'key': 'organization',
+      'name': 'Organization',
       'actions': {
-        'read': {},
-        'comment': {},
-        'update': {},
+        'create': {},
         'delete': {},
+        'edit': {},
+        'view': {}
       },
       'roles': {
-        'editor': {
-          'name': 'Editor',
+        'admin': {
+          'name': 'Admin',
           'permissions': [
-            'read',
-            'comment',
-            'update',
-            'delete',
+            'edit',
+            'view'
           ],
         },
-        'commenter': {
-          'name': 'Commenter',
+        'member': {
+          'name': 'Member',
           'permissions': [
-            'read',
-            'comment',
-          ],
-        },
-        'viewer': {
-          'name': 'Viewer',
-          'permissions': [
-            'read',
+            'view',
           ],
         },
       },
@@ -154,167 +165,99 @@ const createResources = async () => {
 }
 
 const createRelations = async () => {
-  await permit.api.resourceRelations.create('file', {
+  await permit.api.resourceRelations.create('organization', {
     key: 'parent',
     name: 'Parent',
-    subject_resource: 'folder',
+    subject_resource: 'repository',
   })
 
-  await permit.api.resourceRelations.create('folder', {
-    key: 'parent',
-    name: 'Parent',
-    subject_resource: 'folder',
-  })
-
-  await permit.api.resourceRelations.create('folder', {
+  await permit.api.resourceRelations.create('repository', {
     key: 'account',
     name: 'Account',
     subject_resource: 'account',
   })
 
-  await permit.api.resourceRelations.create('file', {
+  await permit.api.resourceRelations.create('organization', {
     key: 'account',
     name: 'Account',
-    subject_resource: 'account',
-  })
-
-  await permit.api.resourceRelations.create('file', {
-    key: 'account_global',
-    name: 'Account Global',
     subject_resource: 'account',
   })
 }
 
 const createUser = async () => {
   await permit.api.syncUser({
-    key: 'john@acme.com',
+    key: 'sahil@coding.com',
   })
 
   await permit.api.syncUser({
-    key: 'jane@acme.com',
+    key: 'anesh@coding.com',
+  })
+
+  await permit.api.syncUser({
+    key: 'arjun@gmail.com',
   })
 }
 
 const createResourceInstance = async () => {
   await permit.api.resourceInstances.create({
-    resource: 'file',
-    key: '2023_report',
+    resource: 'repository',
+    key: 'ReBAC_github',
     tenant: 'default',
   })
 
   await permit.api.resourceInstances.create({
-    resource: 'folder',
-    key: 'finance',
+    resource: 'organization',
+    key: 'coding_mountain',
     tenant: 'default',
   })
 
   await permit.api.resourceInstances.create({
     resource: 'account',
-    key: 'acme',
+    key: 'coding',
     tenant: 'default',
   })
 }
 
 const assignRole = async () => {
   await permit.api.roleAssignments.assign({
-    user: 'john@acme.com',
-    role: 'viewer',
-    resource_instance: 'file:2023_report',
+    user: 'sahil@coding.com',
+    role: 'admin',
+    resource_instance: 'organization:coding_mountain',
   })
 
   await permit.api.roleAssignments.assign({
-    user: 'jane@acme.com',
-    role: 'editor',
-    resource_instance: 'folder:finance',
+    user: 'anesh@coding.com',
+    role: 'owner',
+    resource_instance: 'repository:ReBAC_github',
   })
 
   await permit.api.roleAssignments.assign({
-    user: 'john@acme.com',
-    role: 'viewer',
-    resource_instance: 'file:2023_report',
-    tenant: 'default',
-  })
-}
-
-const createRelationTuples = async () => {
-  await permit.api.relationshipTuples.create({
-    subject: 'folder:finance',
-    relation: 'parent',
-    object: 'file:2023_report',
-  })
-
-  await permit.api.relationshipTuples.create({
-    subject: 'account:acme',
-    relation: 'account',
-    object: 'folder:finance',
-  })
-
-  await permit.api.relationshipTuples.create({
-    subject: 'account:acme',
-    relation: 'account',
-    object: 'file:2023_report',
+    user: 'arjun@gmail.com',
+    role: 'member',
+    resource_instance: 'repository:ReBAC_github',
   })
 }
 
 const createRoleDerivation = async () => {
-  await permit.api.resourceRoles.update('file', 'editor', {
+  await permit.api.resourceRoles.update('organization', 'member', {
     granted_to: {
       users_with_role: [
         {
           linked_by_relation: 'parent',
-          on_resource: 'folder',
-          role: 'editor',
-        },
-        {
-          linked_by_relation: 'account',
-          on_resource: 'account',
-          role: 'admin',
-        },
-        {
-          linked_by_relation: 'account_global',
-          on_resource: 'account',
+          on_resource: 'repository',
           role: 'member',
-        }
-      ]
-    }
-  })
-
-  await permit.api.resourceRoles.update('file', 'commenter', {
-    granted_to: {
-      users_with_role: [
-        {
-          linked_by_relation: 'parent',
-          on_resource: 'folder',
-          role: 'commenter',
-        }
-      ]
-    }
-  })
-
-  await permit.api.resourceRoles.update('file', 'viewer', {
-    granted_to: {
-      users_with_role: [
-        {
-          linked_by_relation: 'parent',
-          on_resource: 'folder',
-          role: 'viewer',
-        }
-      ]
-    }
-  })
-
-  await permit.api.resourceRoles.update('folder', 'editor', {
-    granted_to: {
-      users_with_role: [
-        {
-          linked_by_relation: 'account',
-          on_resource: 'account',
-          role: 'admin',
         },
+      ]
+    }
+  })
+
+  await permit.api.resourceRoles.update('organization', 'admin', {
+    granted_to: {
+      users_with_role: [
         {
           linked_by_relation: 'parent',
-          on_resource: 'folder',
-          role: 'editor',
+          on_resource: 'repository',
+          role: 'admin',
         }
       ]
     }
@@ -324,11 +267,20 @@ const createRoleDerivation = async () => {
 (async () => {
   await cleanEnv()
   await createResources()
+  console.log('createResources')
+
   await createRelations()
+  console.log('createRelations')
+
   await createUser()
+  console.log('createUser')
+
   await createResourceInstance()
+  console.log('createResourceInstance')
+
   await assignRole()
-  await createRelationTuples()
+  console.log('assignRole')
+
   await createRoleDerivation()
-  console.log('Done')
+  console.log('createRoleDerivation')
 })()
