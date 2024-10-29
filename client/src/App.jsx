@@ -1,21 +1,26 @@
-import { useState } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from 'react'
 import './App.css'
+import resourceServices from './services'
 
 const App = () => {
-  const [data, setData] = useState('')
+  const [resource, setResource] = useState([])
 
-  const connectToServer = () => {
-    axios.get('/api')
-      .then(res => res.data)
-      .then(data => setData(data))
-  }
+  useEffect(() => {
+    async function getAllResources () {
+      const allResources = await resourceServices.getResources()
+      setResource(allResources.map(resources => resources.name))
+    }
+    getAllResources()
+  }, [])
 
   return (
     <div>
-      <h1>React connection with Express backend</h1>
-      <button onClick={connectToServer}>Send request</button>
-      <p>{data}</p>
+      <h1>React connection with Express and Permit api</h1>
+      {
+        <ul>
+          {resource.map(r => <li key={r.key}>{r}</li>)}
+        </ul>
+      }
     </div>
   )
 }
