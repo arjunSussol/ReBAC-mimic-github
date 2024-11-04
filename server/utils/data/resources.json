@@ -1,0 +1,360 @@
+[
+    {
+    "key": "repository",
+    "id": "5b82835f61864f7bb666a97d1982bf5c",
+    "organization_id": "b609ad6f531b4b438f0ef9760c02cf12",
+    "project_id": "cbb78be7e4d74b40b1856a3b056198e5",
+    "environment_id": "42f155aa1b4346f1b1f7d4c204d2bf6f",
+    "created_at": "2024-10-28T18:24:31+00:00",
+    "updated_at": "2024-10-28T18:24:31+00:00",
+    "name": "Repository",
+    "urn": "prn:arjun:default:repository",
+    "description": null,
+    "actions": {
+    "edit": {
+    "name": "edit",
+    "description": null,
+    "attributes": null,
+    "id": "f6b3d4085d764ac38b057a0d79c60726",
+    "key": "edit"
+    },
+    "view": {
+    "name": "view",
+    "description": null,
+    "attributes": null,
+    "id": "1e293e5613fd4736b69cba6c60be293a",
+    "key": "view"
+    },
+    "delete": {
+    "name": "delete",
+    "description": null,
+    "attributes": null,
+    "id": "e0371d5a9e0b4df5bf5cdcac96c55eb0",
+    "key": "delete"
+    },
+    "create": {
+    "name": "create",
+    "description": null,
+    "attributes": null,
+    "id": "7bfc25166a794650afaf8e62eff310ba",
+    "key": "create"
+    }
+    },
+    "type_attributes": null,
+    "attributes": {},
+    "roles": {
+    "admin": {
+    "name": "Admin",
+    "description": null,
+    "permissions": [
+    "edit",
+    "view"
+    ],
+    "attributes": null,
+    "extends": [],
+    "granted_to": null,
+    "key": "admin",
+    "id": "aff547c89c6e4da8bd2ed5b0225e7cfd",
+    "organization_id": "b609ad6f531b4b438f0ef9760c02cf12",
+    "project_id": "cbb78be7e4d74b40b1856a3b056198e5",
+    "environment_id": "42f155aa1b4346f1b1f7d4c204d2bf6f",
+    "resource_id": "5b82835f61864f7bb666a97d1982bf5c",
+    "resource": "repository",
+    "created_at": "2024-10-28T18:24:31+00:00",
+    "updated_at": "2024-10-28T18:24:31+00:00"
+    },
+    "owner": {
+    "name": "Owner",
+    "description": null,
+    "permissions": [
+    "delete",
+    "edit",
+    "create",
+    "view"
+    ],
+    "attributes": null,
+    "extends": [],
+    "granted_to": null,
+    "key": "owner",
+    "id": "e0da21e6cede429cb323230889c618e8",
+    "organization_id": "b609ad6f531b4b438f0ef9760c02cf12",
+    "project_id": "cbb78be7e4d74b40b1856a3b056198e5",
+    "environment_id": "42f155aa1b4346f1b1f7d4c204d2bf6f",
+    "resource_id": "5b82835f61864f7bb666a97d1982bf5c",
+    "resource": "repository",
+    "created_at": "2024-10-28T18:24:31+00:00",
+    "updated_at": "2024-10-28T18:24:31+00:00"
+    },
+    "member": {
+    "name": "Member",
+    "description": null,
+    "permissions": [
+    "view"
+    ],
+    "attributes": null,
+    "extends": [],
+    "granted_to": null,
+    "key": "member",
+    "id": "f6c36084c20c4845af63ae35ac691d25",
+    "organization_id": "b609ad6f531b4b438f0ef9760c02cf12",
+    "project_id": "cbb78be7e4d74b40b1856a3b056198e5",
+    "environment_id": "42f155aa1b4346f1b1f7d4c204d2bf6f",
+    "resource_id": "5b82835f61864f7bb666a97d1982bf5c",
+    "resource": "repository",
+    "created_at": "2024-10-28T18:24:31+00:00",
+    "updated_at": "2024-10-28T18:24:31+00:00"
+    }
+    },
+    "relations": {
+    "account": {
+    "description": null,
+    "resource_id": "7fd11e2692f848d28840aee5f26aa356",
+    "resource": "account"
+    }
+    },
+    "action_groups": {}
+    },
+    {
+    "key": "account",
+    "id": "7fd11e2692f848d28840aee5f26aa356",
+    "organization_id": "b609ad6f531b4b438f0ef9760c02cf12",
+    "project_id": "cbb78be7e4d74b40b1856a3b056198e5",
+    "environment_id": "42f155aa1b4346f1b1f7d4c204d2bf6f",
+    "created_at": "2024-10-28T18:24:30+00:00",
+    "updated_at": "2024-10-28T18:24:30+00:00",
+    "name": "Account",
+    "urn": "prn:arjun:default:account",
+    "description": null,
+    "actions": {
+    "delete": {
+    "name": "delete",
+    "description": null,
+    "attributes": null,
+    "id": "ae4614563e004305be7840c9e6372f4b",
+    "key": "delete"
+    },
+    "create": {
+    "name": "create",
+    "description": null,
+    "attributes": null,
+    "id": "47d99cbece304ff1a1811935ba911e0b",
+    "key": "create"
+    },
+    "view": {
+    "name": "view",
+    "description": null,
+    "attributes": null,
+    "id": "7cda0b19fcd74433831e86a550296dd6",
+    "key": "view"
+    },
+    "edit": {
+    "name": "edit",
+    "description": null,
+    "attributes": null,
+    "id": "d29fb6399f8e466bb9ef2a4d023d3746",
+    "key": "edit"
+    }
+    },
+    "type_attributes": null,
+    "attributes": {},
+    "roles": {
+    "owner": {
+    "name": "Owner",
+    "description": null,
+    "permissions": [
+    "create",
+    "view",
+    "delete",
+    "edit"
+    ],
+    "attributes": null,
+    "extends": [],
+    "granted_to": null,
+    "key": "owner",
+    "id": "ad031bcab014405eb4ee28fb5442811a",
+    "organization_id": "b609ad6f531b4b438f0ef9760c02cf12",
+    "project_id": "cbb78be7e4d74b40b1856a3b056198e5",
+    "environment_id": "42f155aa1b4346f1b1f7d4c204d2bf6f",
+    "resource_id": "7fd11e2692f848d28840aee5f26aa356",
+    "resource": "account",
+    "created_at": "2024-10-28T18:24:30+00:00",
+    "updated_at": "2024-10-28T18:24:30+00:00"
+    },
+    "member": {
+    "name": "Member",
+    "description": null,
+    "permissions": [
+    "view"
+    ],
+    "attributes": null,
+    "extends": [],
+    "granted_to": null,
+    "key": "member",
+    "id": "4c45550e42084411975a7cb1658e71f5",
+    "organization_id": "b609ad6f531b4b438f0ef9760c02cf12",
+    "project_id": "cbb78be7e4d74b40b1856a3b056198e5",
+    "environment_id": "42f155aa1b4346f1b1f7d4c204d2bf6f",
+    "resource_id": "7fd11e2692f848d28840aee5f26aa356",
+    "resource": "account",
+    "created_at": "2024-10-28T18:24:30+00:00",
+    "updated_at": "2024-10-28T18:24:30+00:00"
+    },
+    "admin": {
+    "name": "Admin",
+    "description": null,
+    "permissions": [
+    "view",
+    "edit"
+    ],
+    "attributes": null,
+    "extends": [],
+    "granted_to": null,
+    "key": "admin",
+    "id": "2b7792b8bee94909ab9191cb81215d0f",
+    "organization_id": "b609ad6f531b4b438f0ef9760c02cf12",
+    "project_id": "cbb78be7e4d74b40b1856a3b056198e5",
+    "environment_id": "42f155aa1b4346f1b1f7d4c204d2bf6f",
+    "resource_id": "7fd11e2692f848d28840aee5f26aa356",
+    "resource": "account",
+    "created_at": "2024-10-28T18:24:30+00:00",
+    "updated_at": "2024-10-28T18:24:30+00:00"
+    }
+    },
+    "relations": {},
+    "action_groups": {}
+    },
+    {
+    "key": "organization",
+    "id": "ffcc59cb99ba460da37dc93b0d0cbae9",
+    "organization_id": "b609ad6f531b4b438f0ef9760c02cf12",
+    "project_id": "cbb78be7e4d74b40b1856a3b056198e5",
+    "environment_id": "42f155aa1b4346f1b1f7d4c204d2bf6f",
+    "created_at": "2024-10-28T18:24:32+00:00",
+    "updated_at": "2024-10-28T18:24:32+00:00",
+    "name": "Organization",
+    "urn": "prn:arjun:default:organization",
+    "description": null,
+    "actions": {
+    "edit": {
+    "name": "edit",
+    "description": null,
+    "attributes": null,
+    "id": "7fef0a8444e04d0bad723e5eeb237d14",
+    "key": "edit"
+    },
+    "create": {
+    "name": "create",
+    "description": null,
+    "attributes": null,
+    "id": "31e30e9e1fc048c2aec7e4e227a900ba",
+    "key": "create"
+    },
+    "delete": {
+    "name": "delete",
+    "description": null,
+    "attributes": null,
+    "id": "89843ab27d2e41fc939ab6daf5492e5d",
+    "key": "delete"
+    },
+    "view": {
+    "name": "view",
+    "description": null,
+    "attributes": null,
+    "id": "9240e5e9c2184246b39da9a1e324f662",
+    "key": "view"
+    }
+    },
+    "type_attributes": null,
+    "attributes": {},
+    "roles": {
+    "member": {
+    "name": "Member",
+    "description": null,
+    "permissions": [
+    "view"
+    ],
+    "attributes": null,
+    "extends": [],
+    "granted_to": {
+    "when": {
+    "no_direct_roles_on_object": false
+    },
+    "id": "0c3453f7591347e98a6ef0448c8cdaa3",
+    "users_with_role": [
+    {
+    "role_id": "f6c36084c20c4845af63ae35ac691d25",
+    "resource_id": "5b82835f61864f7bb666a97d1982bf5c",
+    "relation_id": "a343bc32362a4f57b6c66f6b60121d7e",
+    "role": "member",
+    "on_resource": "repository",
+    "linked_by_relation": "parent",
+    "when": {
+    "no_direct_roles_on_object": false
+    }
+    }
+    ]
+    },
+    "key": "member",
+    "id": "87951ee20c1f41d88d3628a6d55d0237",
+    "organization_id": "b609ad6f531b4b438f0ef9760c02cf12",
+    "project_id": "cbb78be7e4d74b40b1856a3b056198e5",
+    "environment_id": "42f155aa1b4346f1b1f7d4c204d2bf6f",
+    "resource_id": "ffcc59cb99ba460da37dc93b0d0cbae9",
+    "resource": "organization",
+    "created_at": "2024-10-28T18:24:32+00:00",
+    "updated_at": "2024-10-28T18:24:32+00:00"
+    },
+    "admin": {
+    "name": "Admin",
+    "description": null,
+    "permissions": [
+    "edit",
+    "view"
+    ],
+    "attributes": null,
+    "extends": [],
+    "granted_to": {
+    "when": {
+    "no_direct_roles_on_object": false
+    },
+    "id": "38c171115f1c47ee989e466902461dd7",
+    "users_with_role": [
+    {
+    "role_id": "aff547c89c6e4da8bd2ed5b0225e7cfd",
+    "resource_id": "5b82835f61864f7bb666a97d1982bf5c",
+    "relation_id": "a343bc32362a4f57b6c66f6b60121d7e",
+    "role": "admin",
+    "on_resource": "repository",
+    "linked_by_relation": "parent",
+    "when": {
+    "no_direct_roles_on_object": false
+    }
+    }
+    ]
+    },
+    "key": "admin",
+    "id": "49d09f3854984248bbba32a66f6393cc",
+    "organization_id": "b609ad6f531b4b438f0ef9760c02cf12",
+    "project_id": "cbb78be7e4d74b40b1856a3b056198e5",
+    "environment_id": "42f155aa1b4346f1b1f7d4c204d2bf6f",
+    "resource_id": "ffcc59cb99ba460da37dc93b0d0cbae9",
+    "resource": "organization",
+    "created_at": "2024-10-28T18:24:32+00:00",
+    "updated_at": "2024-10-28T18:24:32+00:00"
+    }
+    },
+    "relations": {
+    "account": {
+    "description": null,
+    "resource_id": "7fd11e2692f848d28840aee5f26aa356",
+    "resource": "account"
+    },
+    "parent": {
+    "description": null,
+    "resource_id": "5b82835f61864f7bb666a97d1982bf5c",
+    "resource": "repository"
+    }
+    },
+    "action_groups": {}
+    }
+    ]

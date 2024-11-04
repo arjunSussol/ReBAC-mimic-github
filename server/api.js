@@ -12,6 +12,11 @@ apiRouter.get('/resources', async (req, res) => {
   return res.json(resources)
 })
 
+apiRouter.get('/users', async (req, res) => {
+  const users = await permit.api.users.list()
+  return res.json(users)
+})
+
 apiRouter.post('/check', async(req, res) => {
   const { user, action, resources } = req.body
   const permitted = await permit.check(user, action, resources)
