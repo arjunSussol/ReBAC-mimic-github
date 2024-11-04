@@ -19,3 +19,6 @@ Go to client directory then `npm install client` for frontend.
 From browser, it should be accesible by http://localhost:5173/resources
 
 Right now frontend display only one dropdown to show resources. I can add more functionality as per requirements.
+
+![Screenshot from 2024-11-04 11-45-29](https://github.com/user-attachments/assets/a8d9f034-e8ac-47f8-9e23-eff19360a936)
+
